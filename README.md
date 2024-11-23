@@ -6,7 +6,7 @@
 
 ## 环境
 
-您无需拥有与我相同的环境，只需支持 PowerShell 即可。以下是我的环境配置：
+您无需拥有与我相同的环境，只需支持 PowerShell 即可（当然最好是开启了全局 `utf-8`）。以下是我的环境配置：
 
 - **操作系统**
 
@@ -15,11 +15,35 @@
 # 结果: Microsoft Windows 11 家庭中文版
 ```
 
-- **处理器**
+- **区域设置**
 
 ```PowerShell
-(Get-WmiObject -Class Win32_Processor).Name
-# 结果: 13th Gen Intel(R) Core(TM) i7-13700H
+Get-WinSystemLocale
+# 结果:
+# LCID             Name             DisplayName
+# ----             ----             -----------
+# 2052             zh-CN             Chinese (Simplified, PRC)
+```
+
+- **字符集设置**
+
+```Powershell
+[System.Text.Encoding]::Default
+# 结果:
+# BodyName          : utf-8
+# EncodingName      : Unicode (UTF-8)
+# HeaderName        : utf-8
+# WebName           : utf-8
+# WindowsCodePage   : 1200
+# IsBrowserDisplay  : True
+# IsBrowserSave     : True
+# IsMailNewsDisplay : True
+# IsMailNewsSave    : True
+# IsSingleByte      : False
+# EncoderFallback   : System.Text.EncoderReplacementFallback
+# DecoderFallback   : System.Text.DecoderReplacementFallback
+# IsReadOnly        : True
+# CodePage          : 65001
 ```
 
 - **`PowerShell` 版本**
