@@ -1,4 +1,4 @@
-# 设置查找路径 输出文件 查找文件
+# 设置查找路径 输出文件 匹配文件字符串 匹配内容正则字符串
 $searchPath = "F:\project\R3M\R3M\R3M"
 $outputChineseStrings = "C:\Users\Administrator\Desktop\Output\ChineseStringsByFile.txt"
 $outputFileName = "C:\Users\Administrator\Desktop\Output\FileName.txt"
@@ -19,7 +19,7 @@ foreach ($file in $outputFiles) {
     }
 }
 
-# 查找所有满足 MatchedStrings 的文件
+# 查找所有满足 MatchedStrings 的文件并进行递归处理
 Get-ChildItem -Path $searchPath -Recurse -Filter $MatchedStrings | ForEach-Object {
     $filePath = $_.FullName
     $fileName = $_.Name
