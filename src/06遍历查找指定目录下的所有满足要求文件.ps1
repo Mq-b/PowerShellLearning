@@ -16,9 +16,10 @@ function Clear-FileIfNotEmpty {
 Clear-FileIfNotEmpty -filePath $outputFileName
 Clear-FileIfNotEmpty -filePath $outputChineseStrings
 
+# 获取指定目录中的项（powershell 中 ls 就是它的别名），-Recurse 递归查找所有子目录的内容，用于查找文件。
 $filePaths = Get-ChildItem -Path $searchPath -Recurse -Filter $filter
 
-# 其实相当于给 $filePaths 这个对象数组（即满足要求的文件） 遍历一遍，执行我们花括号中的脚本块
+# 给 $filePaths 这个对象数组（即满足要求的文件）遍历一遍，每个文件都执行我们花括号中的脚本块
 $filePaths | ForEach-Object {
     $filePath = $_.FullName # $_ 表示当前
 
