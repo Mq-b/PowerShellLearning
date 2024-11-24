@@ -4,6 +4,39 @@
 
 &emsp;&emsp;这个仓库记录了我在学习和教学 PowerShell 脚本过程中的笔记、示例代码和实用脚本。
 
+## 什么是 `PowerShell`?
+
+PowerShell 是一个由微软开发的任务自动化和配置管理工具。**它既是一个命令行 Shell，也是一种脚本语言**。
+
+- **命令行 Shell**：类似于 Windows 的 cmd（命令提示符），但功能更强大更现代。
+
+- **脚本语言**：可以编写脚本来自动执行复杂任务，支持面向对象编程。
+
+更多详细内容可参见微软 [PowerShell 文档](https://learn.microsoft.com/zh-cn/powershell/scripting/overview?view=powershell-7.4)。
+
+另外 PowerShell 还定义了许多命令别名，使得我们命令行中的许多操作类似于 Unix/Linux shell。这让用户更容易上手，特别是那些习惯于 Unix/Linux 的用户。你可以通过命令 **`Get-Alias`** 查看对应关系。
+
+### 常见别名示例
+
+| 别名  | 对应 PowerShell 命令   | 说明                          |
+|-------|-----------------------|-----------------------------|
+| [`ls`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/get-childitem)  | `Get-ChildItem`       | 列出目录中的文件和文件夹     |
+| [`dir`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/get-childitem) | `Get-ChildItem`       | 列出目录中的文件和文件夹     |
+| [`cp`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/copy-item)  | `Copy-Item`           | 复制文件或文件夹             |
+| [`mv`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/move-item)  | `Move-Item`           | 移动文件或文件夹             |
+| [`rm`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/remove-item)  | `Remove-Item`         | 删除文件或文件夹             |
+| [`cat`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/get-content) | `Get-Content`         | 显示文件内容                 |
+| [`type`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/get-content) | `Get-Content`         | 显示文件内容                 |
+| [`gc`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/get-content)  | `Get-Content`         | 显示文件内容                 |
+| [`echo`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.utility/write-output)  | `Write-Output`        | 输出文本                     |
+| [`cls`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.utility/clear-host)  | `Clear-Host`          | 清除控制台屏幕               |
+| [`pwd`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/get-location)  | `Get-Location`        | 显示当前目录                 |
+| [`cd`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/set-location)  | `Set-Location`        | 更改当前目录                 |
+| [`sl`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/set-location)  | `Set-Location`        | 更改当前目录                 |
+| [`mkdir`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/new-item)  | `New-Item`           | 创建新目录                   |
+| [`rmdir`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/remove-item) | `Remove-Item`        | 删除目录                     |
+| [`del`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/remove-item)  | `Remove-Item`         | 删除文件或文件夹             |
+
 ## 环境
 
 您无需拥有与我相同的环境，只需支持 PowerShell 即可（当然最好是开启了全局 `utf-8`）。以下是我的环境配置：
