@@ -1,5 +1,9 @@
 # PowerShellLearning
 
+<div style="text-align: center;">
+    <img src="./image/PowerShell_5.0_icon.png" alt="PowerShell" width="150"/>
+</div>
+
 &emsp;&emsp;欢迎来到 **PowerShellLearning** 仓库！
 
 &emsp;&emsp;这个仓库记录了我在学习和教学 PowerShell 脚本过程中的笔记、示例代码和实用脚本。
