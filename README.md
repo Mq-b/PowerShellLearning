@@ -37,6 +37,32 @@ PowerShell 是一个由微软开发的任务自动化和配置管理工具。**�
 | [`rmdir`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/remove-item) | `Remove-Item`        | 删除目录                     |
 | [`del`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/remove-item)  | `Remove-Item`         | 删除文件或文件夹             |
 
+### 使用 `Get-Help` 获取 PowerShell 文档
+
+在编写脚本时，我们经常需要查阅有关 PowerShell 命令和概念的详细信息。PowerShell 提供了强大的 [`Get-Help`](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/get-help?view=powershell-5.1&WT.mc_id=ps-gethelp) 命令，用于查询本地或在线文档。
+
+#### 基本用法
+
+`Get-Help` 的基本语法如下：
+
+```powershell
+Get-Help [[-Name] <String>]
+```
+
+例如，如果想了解 `Test-Path` 命令的作用和用法，可以使用以下命令：
+
+```PowerShell
+Get-Help Test-Path
+```
+
+#### 获取在线文档
+
+通过添加 **`-Online`** 参数，`Get-Help` 可以直接打开命令的微软在线文档：
+
+```PowerShell
+Get-Help Test-Path -Online
+```
+
 ## 环境
 
 您无需拥有与我相同的环境，只需支持 PowerShell 即可（当然最好是开启了全局 `utf-8`）。以下是我的环境配置：
