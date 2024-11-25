@@ -26,21 +26,28 @@ $filePaths | ForEach-Object {
     # 将满足 -Filter 要求的文件路径写入到文件中
     Add-Content -Path $outputFileName -Value $filePath
 
-    # 读取文件内容
-    $fileContent = Get-Content -Path $filePath -Raw
+    # 读取文件内容（确保文件存在内容才读取）
+    if ((Test-Path -Path $filePath) -and ((Get-Item -Path $filePath).Length -gt 0)) {
+        $fileContent = Get-Content -Path $filePath -Raw -Encoding UTF8 # 读取文件内容（使用 UTF8 因为我们的文件是，确保多环境都正常运行）
+    } else {
+        Write-Warning "文件为空或无法读取: $filePath"
+        return # 跳出当前代码块 处理下下一个对象
+    }
 
     # 正则匹配双引号中文字符串
     $matche = [regex]::Matches($fileContent, $RegexString)
 
     if($matche.Count -gt 0){
         # 将文件名写入输出文件
-        Add-Content -Path $outputChineseStrings -Value "文件名: $filePath"
+        Add-Content -Path $outputChineseStrings -Value "FileName: $filePath"
         foreach ($match in $matche) {
             # 将匹配的字符串写入输出文件
-            Add-Content -Path $outputChineseStrings -Value $match.Value
+            Add-Content -Path $outputChineseStrings -Value $match.Value 
         }
 
         # 添加空行分隔不同文件
         Add-Content -Path $outputChineseStrings -Value ""
     }
 }
+# 写入文件的编码取决于当前区域，读取因为是我们提供的文件，一定是 utf-8 所以我们添加 -Encoding UTF8
+# 普通 windows 用户无需太纠结 utf-8，不然乱码是常态

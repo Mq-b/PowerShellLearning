@@ -1,5 +1,5 @@
-D:\project\PowerShellLearning\File\06test\1\a.txt
-D:\project\PowerShellLearning\File\06test\1\2\a.txt
-D:\project\PowerShellLearning\File\06test\1\2\c.txt
-D:\project\PowerShellLearning\File\06test\2\a.txt
-D:\project\PowerShellLearning\File\06test\2\2\a.txt
+D:\t\PowerShellLearning\File\06test\1\a.txt
+D:\t\PowerShellLearning\File\06test\1\2\a.txt
+D:\t\PowerShellLearning\File\06test\1\2\c.txt
+D:\t\PowerShellLearning\File\06test\2\a.txt
+D:\t\PowerShellLearning\File\06test\2\2\a.txt

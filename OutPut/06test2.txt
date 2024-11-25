@@ -1,16 +1,16 @@
-文件名: D:\project\PowerShellLearning\File\06test\1\a.txt
+FileName: D:\t\PowerShellLearning\File\06test\1\a.txt
 "乐 呵"
 "结 束"
 
-文件名: D:\project\PowerShellLearning\File\06test\1\2\a.txt
+FileName: D:\t\PowerShellLearning\File\06test\1\2\a.txt
 "乐 呵"
 "结 束"
 
-文件名: D:\project\PowerShellLearning\File\06test\2\a.txt
+FileName: D:\t\PowerShellLearning\File\06test\2\a.txt
 "乐 呵"
 "结 束"
 
-文件名: D:\project\PowerShellLearning\File\06test\2\2\a.txt
+FileName: D:\t\PowerShellLearning\File\06test\2\2\a.txt
 "乐 呵"
 "结 束"
 
