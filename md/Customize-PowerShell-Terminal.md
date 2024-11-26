@@ -24,6 +24,15 @@ C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
 C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoExit -Command "echo 'Customize-PowerShell-Terminal'"
 ```
 
+> 也可以使用环境变量拼接出 `powershell.exe` 的路径：
+>
+> ```PowerShell
+> %SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe
+> ```
+>
+> `%SystemRoot%`：这是一个环境变量，通常表示 Windows 安装目录，**可以确保脚本在不同系统上运行时，不需要修改路径**。
+> 我们可以 `echo $env:SystemRoot` 来输出环境变量的值。
+
 如果想要执行多条命令，就需要使用 `&{}` 包裹，并用 `;` 分隔：
 
 ```PowerShell
