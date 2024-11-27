@@ -95,7 +95,7 @@ cmake version 3.30.0
 CMake suite maintained and supported by Kitware (kitware.com/cmake).
 ```
 
-其实你也可以只是定义一个 CMake 变量：
+其实你也可以只是**定义一个 CMake 变量**：
 
 ```PowerShell
 $global:CMake = "D:\CMake\bin\cmake.exe"
@@ -109,3 +109,19 @@ cmake version 3.30.0
 
 CMake suite maintained and supported by Kitware (kitware.com/cmake).
 ```
+
+另外的做法是**定义一个 CMake 函数**：
+
+```PowerShell
+function Global:CMake{
+    return &"D:\CMake\bin\cmake.exe"@args
+}
+```
+
+- `&` 调用运算符。
+
+- `Global:CMake` 定义全局函数，默认是局部的。在会话结束之后销毁。
+
+- `@args` 是一个特殊的语法，用于将传递给函数的所有参数作为一个数组传递给 CMake 可执行文件。这意味着，任何传递给 CMake 函数的参数都会原封不动地传递给 `cmake.exe`。
+
+使用起来和设置了环境变量没有区别，除了 `where.exe` 与 `Get-Command` 命令无法查找到 `cmake.exe` 的路径。
