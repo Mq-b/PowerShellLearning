@@ -54,11 +54,58 @@ Write-Host $currentTime -ForegroundColor Red
 
 - **声明全局变量确保在脚本执行完之后依然可以使用，直到这个 PowerShell 回话结束才会被释放**。
 
-打开终端：
+打开终端执行命令：
 
 ```PowerShell
 13:11:34
 PS C:\Windows\System32\WindowsPowerShell\v1.0> echo $currentTime
 13:11:34
 PS C:\Windows\System32\WindowsPowerShell\v1.0>
+```
+
+## 将可执行程序添加到 PowerShell
+
+其实我们都知道，可以直接设置环境变量，这样所有的终端都可以使用，但是我们想要的恰恰是“**定制**”
+
+- 我只想让我这个终端能使用这个程序。
+
+其实这种很正常，和一开始说的一样，许多开发环境都会提供定制好的终端。
+
+我们可以修改上一节提供的脚本：
+
+```PowerShell
+$global:currentTime = (Get-Date).ToString("HH:MM:ss")
+$global:CMake = "D:\CMake\bin"
+# 临时将 CMake 的路径添加到 PATH 环境变量
+$env:PATH += ";$global:CMake"
+Write-Host $currentTime -ForegroundColor Red
+```
+
+打开终端执行命令：
+
+```PowerShell
+10:11:16
+PS C:\Windows\System32\WindowsPowerShell\v1.0> where.exe CMake
+D:\CMake\bin\cmake.exe
+PS C:\Windows\System32\WindowsPowerShell\v1.0> echo $CMake
+D:\CMake\bin
+PS C:\Windows\System32\WindowsPowerShell\v1.0> CMake --version
+cmake version 3.30.0
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+```
+
+其实你也可以只是定义一个 CMake 变量：
+
+```PowerShell
+$global:CMake = "D:\CMake\bin\cmake.exe"
+```
+
+但是使用会比较麻烦，你不能直接像 CMake 一样调用 `$CMake` 变量，因为 PowerShell 将其当作字符串，而不是命令。你需要使用 `&` 运算符来执行该路径。也就是：
+
+```PowerShell
+PS C:\Windows\System32\WindowsPowerShell\v1.0> & $CMake --version
+cmake version 3.30.0
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
 ```
