@@ -127,3 +127,55 @@ function Global:CMake{
 - `@args` 是一个特殊的语法，用于将传递给函数的所有参数作为一个数组传递给 CMake 可执行文件。这意味着，任何传递给 CMake 函数的参数都会原封不动地传递给 `cmake.exe`。
 
 使用起来和设置了环境变量没有区别，除了 `where.exe` 与 `Get-Command` 命令无法查找到 `cmake.exe` 的路径。
+
+许多时候我们是不方便定义环境变量的[^1]，那个路径可能存在非常多的东西，我们就可以定义函数，以下是我的做法：
+
+```PowerShell
+$global:cl = "D:\visual studio 2022\VC\Tools\MSVC\14.41.34120\bin\Hostx64\x64\cl.exe"
+$global:msbuild = "D:\visual studio 2022\MSBuild\Current\Bin\amd64\msbuild.exe"
+$global:dumpbin = "D:\visual studio 2022\VC\Tools\MSVC\14.41.34120\bin\Hostx64\x64\dumpbin.exe"
+
+function Global:cl{
+    return & $cl @args
+}
+
+function Global:msbuild{
+    return & $msbuild @args
+}
+
+function Global:dumpbin{
+    return & $dumpbin @args
+}
+```
+
+终端测试执行：
+
+```bash
+PS C:\Users\A1387\Desktop> echo $cl
+D:\visual studio 2022\VC\Tools\MSVC\14.41.34120\bin\Hostx64\x64\cl.exe
+PS C:\Users\A1387\Desktop> echo $msbuild
+D:\visual studio 2022\MSBuild\Current\Bin\amd64\msbuild.exe
+PS C:\Users\A1387\Desktop> echo $dumpbin
+D:\visual studio 2022\VC\Tools\MSVC\14.41.34120\bin\Hostx64\x64\dumpbin.exe
+PS C:\Users\A1387\Desktop> cl
+用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.41.34120 版
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+用法: cl [ 选项... ] 文件名... [ /link 链接选项... ]
+PS C:\Users\A1387\Desktop> msbuild
+适用于 .NET Framework MSBuild 版本 17.11.2+c078802d4
+MSBUILD : error MSB1003: 请指定项目或解决方案文件。当前工作目录中未包含项目或解决方案文件。
+PS C:\Users\A1387\Desktop> dumpbin
+Microsoft (R) COFF/PE Dumper Version 14.41.34120.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+用法: DUMPBIN [选项] [文件]
+```
+
+[^1]: 微软文档明确指出，直接设置环境变量可能会导致一些不可预测的问题（例如环境污染、查找路径等问题）。因此，他们推荐使用微软提供的预配置终端，而不是通过手动设置环境变量。尽管我们使用临时环境变量不会影响全局环境，但在当前终端中，依然可能会引发意料之外的问题，因为相关目录中包含了大量的文件。为了避免这些问题，我们选择直接使用绝对路径来定义可执行文件，避免依赖环境变量。
+
+## 总结
+
+按需求设置，有问题可以提 pr 与 issue 补充。
+
+视频教程：<https://www.bilibili.com/video/BV1YbzrYkEqa>
