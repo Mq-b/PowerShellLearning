@@ -178,4 +178,31 @@ Copyright (C) Microsoft Corporation.  All rights reserved.
 
 按需求设置，有问题可以提 pr 与 issue 补充。
 
+以下为我当前的完整设置：
+
+```PowerShell
+$global:mq白 = "伟大无需多言🙌👍"
+
+$global:cl = "D:\visual studio 2022\VC\Tools\MSVC\14.41.34120\bin\Hostx64\x64\cl.exe"
+$global:msbuild = "D:\visual studio 2022\MSBuild\Current\Bin\amd64\msbuild.exe"
+$global:dumpbin = "D:\visual studio 2022\VC\Tools\MSVC\14.41.34120\bin\Hostx64\x64\dumpbin.exe"
+
+function Global:cl{
+    return & $cl @args
+}
+
+function Global:msbuild{
+    return & $msbuild @args
+}
+
+function Global:dumpbin{
+    return & $dumpbin @args
+}
+
+$termWidth = [System.Console]::WindowWidth
+$message = "环境加载成功 🎉"
+$padding = [Math]::Max(0, ($termWidth - $message.Length) / 2)
+Write-Host (" " * $padding + $message) -ForegroundColor Green
+```
+
 视频教程：<https://www.bilibili.com/video/BV1YbzrYkEqa>
