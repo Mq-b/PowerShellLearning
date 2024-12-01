@@ -133,6 +133,8 @@ git clone https://github.com/Mq-b/PowerShellLearning.git
 
 - `File` 文件夹通常是存放脚本进行读取的文件。
 
+- `md` 文件夹存放着有关 PowerShell 内容的一些有意义的文档。
+
 <!-- 还需思考 -->
 
 ## 贡献
