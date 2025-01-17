@@ -42,3 +42,7 @@ __pycache__/
 *.old
 *.orig
 *.rej
+
+version.h
+
+build/

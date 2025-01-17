@@ -119,6 +119,12 @@ $PSVersionTable.PSVersion
 # 5      1      22621  4249
 ```
 
+### `Linux` 中使用 `PowerShell`
+
+我在 Ubuntu22.04 中安装了 `PowerShell.7.4.6`。参见：
+
+- [在 Ubuntu 上安装 PowerShell](https://learn.microsoft.com/zh-cn/powershell/scripting/install/install-ubuntu?view=powershell-7.4)
+
 ## 获取
 
 ```shell
